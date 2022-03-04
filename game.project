@@ -1,6 +1,6 @@
 [bootstrap]
 main_collection = /main/main.collectionc
-render = /defold-rive/lua/rive.renderc
+render = /builtins/render/default.renderc
 
 [script]
 shared_state = 1
@@ -14,5 +14,4 @@ input_method = HiddenInputField
 
 [project]
 title = MiniJam101_ControlTheEnvironment
-dependencies#0 = https://github.com/defold/extension-rive/archive/refs/tags/0.11.0.zip
 
