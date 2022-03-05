@@ -1,13 +1,21 @@
 local cursor = require("in.cursor")
+local gamestate = require("data.gamestate")
 
 function init(self)
 	self.burned = false
+	msg.post("#indicator", "disable")
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == cursor.CLICKED then
+	if message_id == cursor.CLICKED and not gamestate.has_fire_started then
 		msg.post("#", "burn")
+		gamestate.has_fire_started = true
+	elseif message_id == cursor.OVER and not gamestate.has_fire_started then
+		msg.post("#indicator", "enable")
+	elseif message_id == cursor.OUT then
+		msg.post("#indicator", "disable")
 	elseif message_id == hash("burn") then
+		msg.post("#indicator", "disable")
 		if not self.burned then
 			go.animate("#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(0.25, 0.25, 0.25, 1), go.EASING_INOUTCUBIC, 0.5)
 			self.burned = true

@@ -1,6 +1,6 @@
 local nearby_ids = {}
 
-local duration = 30
+local duration = 5
 local burn_timer = 3
 
 local function burn_nearby_objects(self, handle, elapsed)
