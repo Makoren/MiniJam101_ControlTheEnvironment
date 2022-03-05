@@ -3,8 +3,15 @@ local gamestate = require("data.gamestate")
 
 go.property("burned", false)
 
+local function check_if_win()
+	if next(gamestate.active_flammables) == nil then
+		print("You win!")
+	end
+end
+
 function init(self)
 	msg.post("#indicator", "disable")
+	gamestate.active_flammables[go.get_id()] = go.get_id()
 end
 
 function on_message(self, message_id, message, sender)
@@ -20,6 +27,8 @@ function on_message(self, message_id, message, sender)
 		if not self.burned then
 			go.animate("#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(0.25, 0.25, 0.25, 1), go.EASING_INOUTCUBIC, 0.5)
 			self.burned = true
+			gamestate.active_flammables[go.get_id()] = nil
+			check_if_win()
 
 			local pos = go.get_position()
 			collectionfactory.create("#collectionfactory", vmath.vector3(pos.x, pos.y, pos.z + 1))
