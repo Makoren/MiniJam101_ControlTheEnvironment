@@ -1,0 +1,29 @@
+local cursor = require("in.cursor")
+
+function init(self)
+	self.target = vmath.vector3()
+	self.is_dragging = false
+	msg.post(".", "acquire_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == cursor.DRAG_START then
+		self.is_dragging = true
+	elseif
+		self.is_dragging = false
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == nil then
+		self.target.x = action.x
+		self.target.y = action.y
+	end
+end
+
+function update(self, dt)
+	if self.is_dragging then
+		local pos = go.get_position()
+		go.set_position(vmath.vector3(self.target.x, self.target.y, pos.z))
+	end
+end

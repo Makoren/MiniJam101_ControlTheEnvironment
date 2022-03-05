@@ -99,6 +99,86 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "plank"
+  prototype: "/main/objects/plank/plank.go"
+  position {
+    x: 372.0
+    y: 262.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plank1"
+  prototype: "/main/objects/plank/plank.go"
+  position {
+    x: 401.0
+    y: 191.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plank2"
+  prototype: "/main/objects/plank/plank.go"
+  position {
+    x: 407.0
+    y: 331.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "plank3"
+  prototype: "/main/objects/plank/plank.go"
+  position {
+    x: 382.0
+    y: 407.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "bg"
@@ -190,6 +270,11 @@ embedded_instances {
   "    y: 0.0\n"
   "    z: 0.0\n"
   "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"event_only_drag\"\n"
+  "    value: \"true\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
   "  }\n"
   "  properties {\n"
   "    id: \"acquire_input_focus\"\n"
