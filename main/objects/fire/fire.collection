@@ -2,7 +2,7 @@ name: "default"
 scale_along_z: 0
 embedded_instances {
   id: "root"
-  children: "go"
+  children: "flame"
   data: ""
   position {
     x: 0.0
@@ -22,7 +22,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "go"
+  id: "flame"
   data: "components {\n"
   "  id: \"fire_animation\"\n"
   "  component: \"/main/objects/fire/fire_animation.script\"\n"

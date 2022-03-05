@@ -1,5 +1,17 @@
+local cursor = require("in.cursor")
+
+function init(self)
+	self.burned = false
+end
+
 function on_message(self, message_id, message, sender)
-	if message_id == hash("burn") then
+	if message_id == cursor.CLICKED then
+		msg.post("#", "burn")
+	elseif message_id == hash("burn") then
 		go.animate("#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(0.25, 0.25, 0.25, 1), go.EASING_INOUTCUBIC, 0.5)
+		self.burned = true
+
+		local pos = go.get_position()
+		collectionfactory.create("#collectionfactory", vmath.vector3(pos.x, pos.y, pos.z + 1))
 	end
 end

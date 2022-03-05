@@ -1,0 +1,14 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.next_pos = vmath.vector3()
+end
+
+function on_input(self, action_id, action)
+	if action_id == nil then
+		self.next_pos = vmath.vector3(action.x, action.y, 0)
+	end
+end
+
+function update(self, dt)
+	go.set_position(self.next_pos)
+end
