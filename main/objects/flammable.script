@@ -1,8 +1,9 @@
 local cursor = require("in.cursor")
 local gamestate = require("data.gamestate")
 
+go.property("burned", false)
+
 function init(self)
-	self.burned = false
 	msg.post("#indicator", "disable")
 end
 

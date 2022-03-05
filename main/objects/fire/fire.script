@@ -1,7 +1,7 @@
 local nearby_ids = {}
 
-local duration = 5
-local burn_timer = 3
+local duration = 30
+local burn_timer = 1
 
 local function burn_nearby_objects(self, handle, elapsed)
 	for k, v in pairs(nearby_ids) do
@@ -30,6 +30,6 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("insert_id") then
 		nearby_ids[message.other_id] = message.other_id
 	elseif message_id == hash("remove_id") then
-		table.remove(nearby_ids, message.other_id)
+		nearby_ids[message.other_id] = nil
 	end
 end

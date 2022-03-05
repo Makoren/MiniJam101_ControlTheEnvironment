@@ -54,7 +54,7 @@ embedded_components {
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"object\"\n"
+  "group: \"object_drag\"\n"
   "mask: \"cursor\"\n"
   "mask: \"fire\"\n"
   "embedded_collision_shape {\n"

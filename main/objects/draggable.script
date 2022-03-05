@@ -7,9 +7,9 @@ function init(self)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == cursor.DRAG_START then
+	if message_id == cursor.DRAG_START and not go.get("#flammable", "burned") then
 		self.is_dragging = true
-	elseif
+	elseif message_id == cursor.DRAG_END then
 		self.is_dragging = false
 	end
 end
@@ -25,5 +25,9 @@ function update(self, dt)
 	if self.is_dragging then
 		local pos = go.get_position()
 		go.set_position(vmath.vector3(self.target.x, self.target.y, pos.z))
+
+		if go.get("#flammable", "burned") then
+			self.is_dragging = false
+		end
 	end
 end
