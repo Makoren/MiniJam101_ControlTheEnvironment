@@ -1,0 +1,35 @@
+local nearby_ids = {}
+
+local duration = 30
+local burn_timer = 3
+
+local function burn_nearby_objects(self, handle, elapsed)
+	for k, v in pairs(nearby_ids) do
+		msg.post(v, "burn")
+	end
+end
+
+local function extinguish(self, handle, elapsed)
+	go.delete(go.get_parent())
+	go.delete()
+	go.delete("col")
+end
+
+local function loop(self, url, property)
+	go.animate(go.get_parent(), "scale.y", go.PLAYBACK_LOOP_PINGPONG, 0.9, go.EASING_INOUTCUBIC, 0.2)
+end
+
+function init(self)
+	go.set(go.get_parent(), "scale.y", 0)
+	go.animate(go.get_parent(), "scale.y", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_INOUTCUBIC, 0.3, 0, loop)
+	timer.delay(duration, false, extinguish)
+	timer.delay(burn_timer, true, burn_nearby_objects)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("insert_id") then
+		nearby_ids[message.other_id] = message.other_id
+	elseif message_id == hash("remove_id") then
+		table.remove(nearby_ids, message.other_id)
+	end
+end

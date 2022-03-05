@@ -19,12 +19,72 @@ instances {
     z: 1.0
   }
 }
-collection_instances {
-  id: "fire"
-  collection: "/main/objects/fire/fire.collection"
+instances {
+  id: "wooden_box1"
+  prototype: "/main/objects/wooden_box/wooden_box.go"
   position {
-    x: 247.0
-    y: 295.0
+    x: 137.0
+    y: 502.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wooden_box2"
+  prototype: "/main/objects/wooden_box/wooden_box.go"
+  position {
+    x: 229.0
+    y: 482.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wooden_box3"
+  prototype: "/main/objects/wooden_box/wooden_box.go"
+  position {
+    x: 324.0
+    y: 507.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wooden_box4"
+  prototype: "/main/objects/wooden_box/wooden_box.go"
+  position {
+    x: 113.0
+    y: 191.0
     z: 0.0
   }
   rotation {
