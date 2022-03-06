@@ -12,8 +12,6 @@ function init(self)
 			gamestate.node_positions[index] = pos
 		end
 	end
-
-	pprint(gamestate.node_positions)
 	
 	-- vertical routes
 	defgraph.map_add_route(1, 2)
