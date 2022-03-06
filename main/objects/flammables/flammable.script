@@ -30,8 +30,9 @@ function on_message(self, message_id, message, sender)
 			gamestate.active_flammables[go.get_id()] = nil
 			check_if_win()
 
-			local pos = go.get_position()
-			collectionfactory.create("#collectionfactory", vmath.vector3(pos.x, pos.y, pos.z + 1))
+			local pos = go.get_position("fire_start_point")
+			local root_pos = go.get_position()
+			collectionfactory.create("#collectionfactory", vmath.vector3(root_pos.x + pos.x, root_pos.y + pos.y, pos.z + 1))
 		end
 	end
 end

@@ -1,0 +1,4 @@
+function update(self, dt)
+	local pos = go.get_position()
+	go.set_position(vmath.vector3(pos.x, pos.y, -(pos.y / 10)))
+end

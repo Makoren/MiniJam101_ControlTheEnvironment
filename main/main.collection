@@ -1,190 +1,190 @@
 name: "main"
 instances {
-  id: "wooden_box"
-  prototype: "/main/objects/wooden_box/wooden_box.go"
-  position {
-    x: 42.0
-    y: 522.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "wooden_box1"
-  prototype: "/main/objects/wooden_box/wooden_box.go"
-  position {
-    x: 137.0
-    y: 502.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "wooden_box2"
-  prototype: "/main/objects/wooden_box/wooden_box.go"
-  position {
-    x: 229.0
-    y: 482.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "wooden_box3"
-  prototype: "/main/objects/wooden_box/wooden_box.go"
-  position {
-    x: 324.0
-    y: 507.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "wooden_box4"
-  prototype: "/main/objects/wooden_box/wooden_box.go"
-  position {
-    x: 113.0
-    y: 191.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "plank"
-  prototype: "/main/objects/plank/plank.go"
-  position {
-    x: 386.0
-    y: 317.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "plank1"
-  prototype: "/main/objects/plank/plank.go"
-  position {
-    x: 415.0
-    y: 246.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "plank2"
-  prototype: "/main/objects/plank/plank.go"
-  position {
-    x: 421.0
-    y: 386.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "plank3"
-  prototype: "/main/objects/plank/plank.go"
-  position {
-    x: 396.0
-    y: 462.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "worker"
   prototype: "/main/objects/worker/worker.go"
   position {
     x: 196.0
     y: 272.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 48.0
+    y: 456.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box1"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 144.0
+    y: 456.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box2"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 250.0
+    y: 456.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box3"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 348.0
+    y: 456.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box4"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 112.0
+    y: 65.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "plank"
+  collection: "/main/objects/flammables/plank/plank.collection"
+  position {
+    x: 418.0
+    y: 379.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "plank1"
+  collection: "/main/objects/flammables/plank/plank.collection"
+  position {
+    x: 418.0
+    y: 303.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "plank2"
+  collection: "/main/objects/flammables/plank/plank.collection"
+  position {
+    x: 418.0
+    y: 215.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "plank3"
+  collection: "/main/objects/flammables/plank/plank.collection"
+  position {
+    x: 418.0
+    y: 133.0
     z: 0.0
   }
   rotation {
@@ -226,7 +226,7 @@ embedded_instances {
   position {
     x: 0.0
     y: 0.0
-    z: -10.0
+    z: -1000.0
   }
   rotation {
     x: 0.0
