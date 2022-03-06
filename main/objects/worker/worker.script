@@ -1,9 +1,9 @@
 local defgraph = require("defgraph.defgraph")
+local gamestate = require("data.gamestate")
 
-local function alert_state(self, handle, elapsed)
-	-- wander nodes argument needs the one node you targetted
+local function alert_state(self, handle, elapsed)	
 	self.standing_in_place = false
-	self.movement_data = defgraph.move_initialize(go.get_position(), { 1 })
+	self.movement_data = defgraph.move_initialize(go.get_position(), { gamestate.extinguishers_worker_node })
 end
 
 function init(self)
