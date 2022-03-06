@@ -1,31 +1,46 @@
 local defgraph = require("defgraph.defgraph")
 
+local function alert_state(self, handle, elapsed)
+	-- wander nodes argument needs the one node you targetted
+	self.standing_in_place = false
+	self.movement_data = defgraph.move_initialize(go.get_position(), { 1 })
+end
+
 function init(self)
 	self.walk_speed = 50
 	self.run_speed = 100
 	self.is_alerted = false
+	self.standing_in_place = false
+
+	self.next_fire_id = nil
+	self.next_water_source_id = nil
 
 	-- insert every node into this table so the worker can navigate to all of them
-	local wander_nodes = {}
+	self.wander_nodes = {}
 	for i = 1, 30 do
-		table.insert(wander_nodes, i)
+		table.insert(self.wander_nodes, i)
 	end
 	
-	self.movement_data = defgraph.move_initialize(go.get_position(), wander_nodes, defgraph.ROUTETYPE.CYCLE)
+	self.movement_data = defgraph.move_initialize(go.get_position(), self.wander_nodes, defgraph.ROUTETYPE.SHUFFLE)
 	self.move_result = nil
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") and message.enter and not self.is_alerted then
 		self.is_alerted = true
+		self.standing_in_place = true
+		self.next_fire_id = message.other_id
+		timer.delay(1, false, alert_state)
 	end
 end
 
 function update(self, dt)
-	if self.is_alerted then
-		self.movement_data, self.move_result = defgraph.move_player(go.get_position(), self.run_speed * dt, self.movement_data)
-	else
-		self.movement_data, self.move_result = defgraph.move_player(go.get_position(), self.walk_speed * dt, self.movement_data)
+	if not self.standing_in_place then
+		if self.is_alerted then
+			self.movement_data, self.move_result = defgraph.move_player(go.get_position(), self.run_speed * dt, self.movement_data)
+		else
+			self.movement_data, self.move_result = defgraph.move_player(go.get_position(), self.walk_speed * dt, self.movement_data)
+		end
 	end
 
 	if self.move_result then

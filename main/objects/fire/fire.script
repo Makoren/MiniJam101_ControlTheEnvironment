@@ -31,5 +31,7 @@ function on_message(self, message_id, message, sender)
 		nearby_ids[message.other_id] = message.other_id
 	elseif message_id == hash("remove_id") then
 		nearby_ids[message.other_id] = nil
+	elseif message_id == hash("extinguish") then
+		extinguish()
 	end
 end

@@ -1,9 +1,15 @@
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
-		if message.enter then
-			msg.post("flame#fire", "insert_id", { other_id = message.other_id })
-		else
-			msg.post("flame#fire", "remove_id", { other_id = message.other_id })
+		if message.group == hash("worker") then
+			if message.enter then
+				msg.post("flame#fire", "extinguish")
+			end
+		elseif message.group == hash("object") or message.group == hash("object_drag") then
+			if message.enter then
+				msg.post("flame#fire", "insert_id", { other_id = message.other_id })
+			else
+				msg.post("flame#fire", "remove_id", { other_id = message.other_id })
+			end
 		end
 	end
 end
