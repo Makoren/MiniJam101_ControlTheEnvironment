@@ -45,6 +45,6 @@ function update(self, dt)
 
 	if self.move_result then
 		go.set_position(self.move_result.position)
-		defgraph.debug_draw_player_move(self.movement_data, vmath.vector4(1, 1, 0, 1))
+		--defgraph.debug_draw_player_move(self.movement_data, vmath.vector4(1, 1, 0, 1))
 	end
 end
