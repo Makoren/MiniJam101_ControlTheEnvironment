@@ -1,17 +1,17 @@
 local defgraph = require("defgraph.defgraph")
 
-go.property("wander_node_1", 1)
-go.property("wander_node_2", 2)
-go.property("wander_node_3", 3)
-go.property("wander_node_4", 4)
-
 function init(self)
 	self.walk_speed = 50
 	self.run_speed = 100
 	self.is_alerted = false
+
+	-- insert every node into this table so the worker can navigate to all of them
+	local wander_nodes = {}
+	for i = 1, 30 do
+		table.insert(wander_nodes, i)
+	end
 	
-	local wander_nodes = { self.wander_node_1, self.wander_node_2, self.wander_node_3, self.wander_node_4 }
-	self.movement_data = defgraph.move_initialize(go.get_position(), wander_nodes, defgraph.ROUTETYPE.SHUFFLE)
+	self.movement_data = defgraph.move_initialize(go.get_position(), wander_nodes, defgraph.ROUTETYPE.CYCLE)
 	self.move_result = nil
 end
 
