@@ -179,6 +179,26 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "worker"
+  prototype: "/main/objects/worker/worker.go"
+  position {
+    x: 196.0
+    y: 272.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "bg"
@@ -332,6 +352,41 @@ embedded_instances {
   "locked_rotation: false\\n"
   "bullet: false\\n"
   "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "worker_path"
+  data: "components {\n"
+  "  id: \"worker_path\"\n"
+  "  component: \"/main/objects/worker/worker_path.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"

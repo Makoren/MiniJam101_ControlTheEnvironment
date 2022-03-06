@@ -1,0 +1,35 @@
+local defgraph = require("defgraph.defgraph")
+
+go.property("wander_node_1", 1)
+go.property("wander_node_2", 2)
+go.property("wander_node_3", 3)
+go.property("wander_node_4", 4)
+
+function init(self)
+	self.walk_speed = 50
+	self.run_speed = 100
+	self.is_alerted = false
+	
+	local wander_nodes = { self.wander_node_1, self.wander_node_2, self.wander_node_3, self.wander_node_4 }
+	self.movement_data = defgraph.move_initialize(go.get_position(), wander_nodes, defgraph.ROUTETYPE.SHUFFLE)
+	self.move_result = nil
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") and message.enter and not self.is_alerted then
+		self.is_alerted = true
+	end
+end
+
+function update(self, dt)
+	if self.is_alerted then
+		self.movement_data, self.move_result = defgraph.move_player(go.get_position(), self.run_speed * dt, self.movement_data)
+	else
+		self.movement_data, self.move_result = defgraph.move_player(go.get_position(), self.walk_speed * dt, self.movement_data)
+	end
+
+	if self.move_result then
+		go.set_position(self.move_result.position)
+		defgraph.debug_draw_player_move(self.movement_data, vmath.vector4(1, 1, 0, 1))
+	end
+end

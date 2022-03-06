@@ -15,4 +15,5 @@ input_method = HiddenInputField
 [project]
 title = MiniJam101_ControlTheEnvironment
 dependencies#0 = https://github.com/britzl/defold-input/archive/refs/tags/4.3.0.zip
+dependencies#1 = https://github.com/dev-masih/defgraph/archive/refs/tags/V4.1.zip
 

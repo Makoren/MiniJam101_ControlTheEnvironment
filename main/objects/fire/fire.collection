@@ -104,6 +104,7 @@ embedded_instances {
   "group: \\\"fire\\\"\\n"
   "mask: \\\"object\\\"\\n"
   "mask: \\\"object_drag\\\"\\n"
+  "mask: \\\"worker\\\"\\n"
   "embedded_collision_shape {\\n"
   "  shapes {\\n"
   "    shape_type: TYPE_SPHERE\\n"
