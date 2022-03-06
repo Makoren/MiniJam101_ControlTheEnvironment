@@ -55,7 +55,7 @@ function init(self)
 	defgraph.map_add_route(9, 14)
 	defgraph.map_add_route(14, 19)
 	defgraph.map_add_route(19, 24)
-	defgraph.map_add_route(24, 19)
+	defgraph.map_add_route(24, 29)
 	
 	defgraph.map_add_route(3, 8)
 	defgraph.map_add_route(8, 13)
