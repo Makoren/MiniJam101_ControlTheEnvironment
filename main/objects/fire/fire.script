@@ -1,10 +1,18 @@
-local nearby_ids = {}
+local gamestate = require("data.gamestate")
 
-local duration = 30
-local burn_timer = 1
+local function get_nearest_worker_node()
+	local root_pos = go.get_position("root")
+	table.sort(gamestate.node_positions, function(pos1, pos2)
+		-- get distance between pos1 and the fire, then pos2 and the fire, and return a < check between those distances
+		local distance1 = pos1 - root_pos
+		local distance2 = pos2 - root_pos
+		return vmath.length(distance1) < vmath.length(distance2)
+	end)
+	return gamestate.node_positions[1]
+end
 
 local function burn_nearby_objects(self, handle, elapsed)
-	for k, v in pairs(nearby_ids) do
+	for k, v in pairs(self.nearby_ids) do
 		msg.post(v, "burn")
 	end
 end
@@ -20,17 +28,26 @@ local function loop(self, url, property)
 end
 
 function init(self)
+	self.nearby_ids = {}
+	self.duration = 30
+	self.burn_timer = 1
+	self.worker_node = nil
+	
 	go.set(go.get_parent(), "scale.y", 0)
 	go.animate(go.get_parent(), "scale.y", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_INOUTCUBIC, 0.3, 0, loop)
-	timer.delay(duration, false, extinguish)
-	timer.delay(burn_timer, true, burn_nearby_objects)
+	timer.delay(self.duration, false, extinguish)
+	--timer.delay(self.burn_timer, true, burn_nearby_objects)
+	msg.post("#", "fire_init")
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("insert_id") then
-		nearby_ids[message.other_id] = message.other_id
+	if message_id == hash("fire_init") then
+		self.worker_node = get_nearest_worker_node()
+		print(self.worker_node)
+	elseif message_id == hash("insert_id") then
+		self.nearby_ids[message.other_id] = message.other_id
 	elseif message_id == hash("remove_id") then
-		nearby_ids[message.other_id] = nil
+		self.nearby_ids[message.other_id] = nil
 	elseif message_id == hash("extinguish") then
 		extinguish()
 	end
