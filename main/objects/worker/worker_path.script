@@ -13,6 +13,8 @@ function init(self)
 		end
 	end
 
+	pprint(gamestate.node_positions)
+	
 	-- vertical routes
 	defgraph.map_add_route(1, 2)
 	defgraph.map_add_route(2, 3)

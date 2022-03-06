@@ -1,0 +1,24 @@
+local gamestate = require("data.gamestate")
+
+local function get_nearest_worker_node()
+	local root_pos = go.get_position("root")
+	table.sort(gamestate.node_positions, function(pos1, pos2)
+		-- get distance between pos1 and the fire, then pos2 and the fire, and return a < check between those distances
+		local distance1 = pos1 - root_pos
+		local distance2 = pos2 - root_pos
+		return vmath.length(distance1) < vmath.length(distance2)
+	end)
+	return gamestate.node_positions[1]
+end
+
+function init(self)
+	self.worker_node = nil
+	msg.post("#", "extinguishers_init")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("extinguishers_init") then
+		self.worker_node = get_nearest_worker_node()
+		print(self.worker_node)
+	end
+end
