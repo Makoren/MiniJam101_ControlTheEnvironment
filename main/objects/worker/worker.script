@@ -3,6 +3,7 @@ local gamestate = require("data.gamestate")
 
 local function alert_state(self, handle, elapsed)	
 	self.standing_in_place = false
+	msg.post(self.fire_col_id, "get_worker_node")
 	self.movement_data = defgraph.move_initialize(go.get_position(), { gamestate.extinguishers_worker_node })
 end
 
@@ -11,26 +12,39 @@ function init(self)
 	self.run_speed = 100
 	self.is_alerted = false
 	self.standing_in_place = false
+	self.is_carrying_extinguisher = false
 
-	self.next_fire_id = nil
-	self.next_water_source_id = nil
+	self.fire_col_id = nil
+	self.next_fire_node = nil
 
 	-- insert every node into this table so the worker can navigate to all of them
-	self.wander_nodes = {}
+	self.all_nodes = {}
 	for i = 1, 30 do
-		table.insert(self.wander_nodes, i)
+		table.insert(self.all_nodes, i)
 	end
 	
-	self.movement_data = defgraph.move_initialize(go.get_position(), self.wander_nodes, defgraph.ROUTETYPE.SHUFFLE)
+	self.movement_data = defgraph.move_initialize(go.get_position(), self.all_nodes, defgraph.ROUTETYPE.SHUFFLE)
 	self.move_result = nil
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") and message.enter and not self.is_alerted then
-		self.is_alerted = true
-		self.standing_in_place = true
-		self.next_fire_id = message.other_id
-		timer.delay(1, false, alert_state)
+	if message_id == hash("trigger_response") then
+		if message.group == hash("fire") and message.enter then
+			if self.is_carrying_extinguisher then
+				-- extinguish and find another fire node if possible
+				msg.post(message.other_id, "extinguish")
+			elseif not self.is_alerted then
+				self.is_alerted = true
+				self.standing_in_place = true
+				self.fire_col_id = message.other_id
+				timer.delay(1, false, alert_state)
+			end
+		elseif message.group == hash("extinguishers") and message.enter and self.is_alerted then
+			self.is_carrying_extinguisher = true
+			self.movement_data = defgraph.move_initialize(go.get_position(), { self.next_fire_node })
+		end
+	elseif message_id == hash("worker_node_response") then
+		self.next_fire_node = message.worker_node
 	end
 end
 
