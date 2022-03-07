@@ -33,7 +33,7 @@ function on_message(self, message_id, message, sender)
 				msg.post(v, "extinguish")
 			end
 
-			-- trigger lose condition
+			print("You lose...")
 		end
 	end
 end

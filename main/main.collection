@@ -20,31 +20,11 @@ instances {
   }
 }
 collection_instances {
-  id: "wooden_box"
-  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
-  position {
-    x: 48.0
-    y: 456.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-collection_instances {
   id: "wooden_box1"
   collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
   position {
-    x: 144.0
-    y: 456.0
+    x: 204.0
+    y: 458.0
     z: 0.0
   }
   rotation {
@@ -63,8 +43,8 @@ collection_instances {
   id: "wooden_box2"
   collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
   position {
-    x: 250.0
-    y: 456.0
+    x: 303.0
+    y: 460.0
     z: 0.0
   }
   rotation {
@@ -83,28 +63,8 @@ collection_instances {
   id: "wooden_box3"
   collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
   position {
-    x: 348.0
-    y: 456.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-collection_instances {
-  id: "wooden_box4"
-  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
-  position {
-    x: 112.0
-    y: 65.0
+    x: 399.0
+    y: 460.0
     z: 0.0
   }
   rotation {
@@ -123,8 +83,8 @@ collection_instances {
   id: "plank"
   collection: "/main/objects/flammables/plank/plank.collection"
   position {
-    x: 418.0
-    y: 379.0
+    x: 124.0
+    y: 244.0
     z: 0.0
   }
   rotation {
@@ -143,8 +103,8 @@ collection_instances {
   id: "plank1"
   collection: "/main/objects/flammables/plank/plank.collection"
   position {
-    x: 418.0
-    y: 303.0
+    x: 338.0
+    y: 356.0
     z: 0.0
   }
   rotation {
@@ -163,8 +123,8 @@ collection_instances {
   id: "plank2"
   collection: "/main/objects/flammables/plank/plank.collection"
   position {
-    x: 418.0
-    y: 215.0
+    x: 395.0
+    y: 225.0
     z: 0.0
   }
   rotation {
@@ -183,8 +143,8 @@ collection_instances {
   id: "plank3"
   collection: "/main/objects/flammables/plank/plank.collection"
   position {
-    x: 418.0
-    y: 133.0
+    x: 586.0
+    y: 61.0
     z: 0.0
   }
   rotation {
@@ -205,6 +165,166 @@ collection_instances {
   position {
     x: 558.0
     y: 505.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box5"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 110.0
+    y: 458.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 493.0
+    y: 460.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box4"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 493.0
+    y: 41.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box6"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 204.0
+    y: 39.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box7"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 303.0
+    y: 41.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box8"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 399.0
+    y: 41.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "wooden_box9"
+  collection: "/main/objects/flammables/wooden_box/wooden_box.collection"
+  position {
+    x: 110.0
+    y: 39.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "plank4"
+  collection: "/main/objects/flammables/plank/plank.collection"
+  position {
+    x: 547.0
+    y: 318.0
     z: 0.0
   }
   rotation {
@@ -280,7 +400,7 @@ embedded_instances {
   ""
   position {
     x: 0.0
-    y: 0.0
+    y: 55.0
     z: 0.0
   }
   rotation {
@@ -387,7 +507,7 @@ embedded_instances {
   ""
   position {
     x: 0.0
-    y: 0.0
+    y: 55.0
     z: 0.0
   }
   rotation {
@@ -422,7 +542,7 @@ embedded_instances {
   ""
   position {
     x: 0.0
-    y: 0.0
+    y: 55.0
     z: 0.0
   }
   rotation {
@@ -476,7 +596,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 319.0
+    x: 1199.0
     y: 325.0
     z: 1000.0
   }
@@ -489,6 +609,56 @@ embedded_instances {
   scale3 {
     x: 50.0
     y: 50.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "title"
+  data: "components {\n"
+  "  id: \"title\"\n"
+  "  component: \"/main/objects/titlescreen/title.gui\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"title1\"\n"
+  "  component: \"/main/objects/titlescreen/title.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }

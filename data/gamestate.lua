@@ -1,5 +1,7 @@
 local M = {}
 
+M.has_game_started = false
+
 M.has_fire_started = false
 
 -- remove scripts as soon as they are burned

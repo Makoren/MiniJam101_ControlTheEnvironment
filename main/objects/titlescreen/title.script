@@ -1,0 +1,6 @@
+function on_message(self, message_id, message, sender)
+	if message_id == hash("move_up") then
+		--go.animate("#title1", "position.y", go.PLAYBACK_ONCE_FORWARD, 640, go.EASING_INELASTIC, 1)
+		go.delete()
+	end
+end
