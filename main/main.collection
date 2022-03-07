@@ -3,8 +3,8 @@ instances {
   id: "worker"
   prototype: "/main/objects/worker/worker.go"
   position {
-    x: 196.0
-    y: 272.0
+    x: 156.0
+    y: 370.0
     z: 0.0
   }
   rotation {

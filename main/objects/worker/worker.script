@@ -1,62 +1,8 @@
 local defgraph = require("defgraph.defgraph")
 local gamestate = require("data.gamestate")
 
-local get_nearest_fire_node_and_id
-local find_next_fire
-
-function find_next_fire(self, handle, elapsed)
-	print("finding")
-	if next(self.touching_fire_cols) ~= nil then
-		-- extinguish the other fires first and remove them from touching_fire_cols
-		for k, v in pairs(self.touching_fire_cols) do
-			msg.post(v, "extinguish")
-			self.touching_fire_cols[v] = nil
-		end
-	end
-
-	local new_node, new_id = get_nearest_fire_node_and_id(self)
-	self.next_fire_id = new_id
-	self.movement_data = defgraph.move_initialize(go.get_position(), { new_node })
-
-	timer.delay(0.5, false, find_next_fire)
-end
-
-function get_nearest_fire_node_and_id(self)
-	local pos = go.get_position()
-	
-	-- create copy of table for sorting, since it sorts in-place
-	local fires_copy = table.shallowcopy(gamestate.fires)
-
-	table.sort(fires_copy, function(pos1, pos2)
-		-- get distance between pos1 and the worker, then pos2 and the worker, and return a check between those distances
-		local distance1 = go.get_position(pos1) - pos
-		local distance2 = go.get_position(pos2) - pos
-		return vmath.length(distance1) < vmath.length(distance2)
-	end)
-
-	-- get first key in the table
-	local first_key
-	for k in pairs(fires_copy) do
-		first_key = k
-		break
-	end
-
-	local new_url = msg.url(nil, fires_copy[first_key], "fire")
-	-- pcall checks if the function will throw an error or not, try not to rely on this in real projects (unless it doesn't matter)
-	local result = pcall(go.get, new_url, "worker_node")
-	local value = nil
-	if result then
-		value = go.get(new_url, "worker_node")
-	end
-
-	print(result)
-	
-	return value, first_key
-end
-
 local function alert_state(self, handle, elapsed)
 	self.standing_in_place = false
-	msg.post(self.fire_col_id, "get_worker_node")
 	self.movement_data = defgraph.move_initialize(go.get_position(), { gamestate.extinguishers_worker_node })
 end
 
@@ -65,21 +11,9 @@ function init(self)
 	self.run_speed = 100
 	self.is_alerted = false
 	self.standing_in_place = false
-	self.is_carrying_extinguisher = false
 
-	self.fire_col_id = nil
-	self.next_fire_id = nil
-	self.next_fire_node = nil
-
-	self.touching_fire_cols = {}
-
-	-- insert every node into this table so the worker can navigate to all of them
-	self.all_nodes = {}
-	for i = 1, 30 do
-		table.insert(self.all_nodes, i)
-	end
-	
-	self.movement_data = defgraph.move_initialize(go.get_position(), self.all_nodes, defgraph.ROUTETYPE.SHUFFLE)
+	self.wander_nodes = { 9, 7, 22, 24 }
+	self.movement_data = defgraph.move_initialize(go.get_position(), self.wander_nodes, defgraph.ROUTETYPE.CYCLE)
 	self.move_result = nil
 end
 
@@ -87,33 +21,19 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
 		if message.group == hash("fire") then
 			if message.enter then
-				self.touching_fire_cols[message.other_id] = message.other_id
-				local url = msg.url(nil, message.other_id, "fire_collision")
-				local fire_id = go.get(url, "fire_id")
-				if self.is_carrying_extinguisher and fire_id == self.next_fire_id then
-					-- extinguish and find another fire node if possible
-					msg.post(fire_id, "extinguish")
-					self.touching_fire_cols[message.other_id] = nil
-					find_next_fire(self)
-				elseif not self.is_alerted then
+				if not self.is_alerted then
 					self.is_alerted = true
 					self.standing_in_place = true
-					self.fire_col_id = message.other_id
-					
-					local url = msg.url(nil, message.other_id, "fire_collision")
-					local fire_id = go.get(url, "fire_id")
-					self.next_fire_id = fire_id
 					timer.delay(1, false, alert_state)
 				end
-			else
-				self.touching_fire_cols[message.other_id] = nil
 			end
 		elseif message.group == hash("extinguishers") and message.enter and self.is_alerted then
-			self.is_carrying_extinguisher = true
-			self.movement_data = defgraph.move_initialize(go.get_position(), { self.next_fire_node })
+			for k, v in pairs(gamestate.fires) do
+				msg.post(v, "extinguish")
+			end
+
+			-- trigger lose condition
 		end
-	elseif message_id == hash("worker_node_response") then
-		self.next_fire_node = message.worker_node
 	end
 end
 
