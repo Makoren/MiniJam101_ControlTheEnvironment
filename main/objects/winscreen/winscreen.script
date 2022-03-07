@@ -1,0 +1,11 @@
+function init(self)
+	msg.post("#losescreen", "disable")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show") then
+		msg.post("#losescreen", "enable")
+	elseif message_id == hash("hide") then
+		msg.post("#losescreen", "disable")
+	end
+end

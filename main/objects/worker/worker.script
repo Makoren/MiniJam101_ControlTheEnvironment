@@ -33,7 +33,10 @@ function on_message(self, message_id, message, sender)
 				msg.post(v, "extinguish")
 			end
 
-			print("You lose...")
+			if gamestate.has_game_started then
+				msg.post("/losescreen", "show")
+				gamestate.has_game_started = false
+			end
 		end
 	end
 end

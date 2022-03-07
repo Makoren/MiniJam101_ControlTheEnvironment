@@ -5,7 +5,10 @@ go.property("burned", false)
 
 local function check_if_win()
 	if next(gamestate.active_flammables) == nil then
-		print("You win!")
+		if gamestate.has_game_started then
+			msg.post("/winscreen", "show")
+			gamestate.has_game_started = false
+		end
 	end
 end
 

@@ -3,6 +3,10 @@ fonts {
   name: "system_font"
   font: "/main/system_font.font"
 }
+fonts {
+  name: "system_font_smol"
+  font: "/main/system_font_smol.font"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -12,7 +16,7 @@ background_color {
 nodes {
   position {
     x: 317.0
-    y: 378.0
+    y: 475.0
     z: 0.0
     w: 1.0
   }
@@ -75,7 +79,7 @@ nodes {
 nodes {
   position {
     x: 318.0
-    y: 208.0
+    y: 119.0
     z: 0.0
     w: 1.0
   }
@@ -180,6 +184,69 @@ nodes {
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
   parent: "playbutton"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 325.0
+    y: 292.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 400.0
+    y: 200.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Burn everything before the worker\n"
+  "activates the fire sprinklers!"
+  font: "system_font_smol"
+  id: "text1"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
   layer: ""
   inherit_alpha: true
   alpha: 1.0

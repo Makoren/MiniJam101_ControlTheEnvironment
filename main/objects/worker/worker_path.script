@@ -77,6 +77,6 @@ function init(self)
 end
 
 function update(self, dt)
-	defgraph.debug_draw_map_nodes(true)
-	defgraph.debug_draw_map_routes()
+	--defgraph.debug_draw_map_nodes(true)
+	--defgraph.debug_draw_map_routes()
 end
