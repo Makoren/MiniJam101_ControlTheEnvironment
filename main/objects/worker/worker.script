@@ -24,6 +24,7 @@ function on_message(self, message_id, message, sender)
 				if not self.is_alerted then
 					self.is_alerted = true
 					self.standing_in_place = true
+					factory.create("#factory")
 					timer.delay(1, false, alert_state)
 				end
 			end
