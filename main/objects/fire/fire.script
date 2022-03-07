@@ -14,6 +14,7 @@ local function extinguish(self, handle, elapsed)
 	go.delete(go.get_parent())
 	go.delete()
 	go.delete("col")
+	gamestate.fires[go.get_id()] = nil
 end
 
 local function loop(self, url, property)
@@ -24,10 +25,11 @@ function init(self)
 	self.nearby_ids = {}
 	self.duration = 30
 	self.burn_timer = 1
+	gamestate.fires[go.get_id()] = go.get_id()
 	
 	go.set(go.get_parent(), "scale.y", 0)
 	go.animate(go.get_parent(), "scale.y", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_INOUTCUBIC, 0.3, 0, loop)
-	timer.delay(self.duration, false, extinguish)
+	--timer.delay(self.duration, false, extinguish)
 	timer.delay(self.burn_timer, true, burn_nearby_objects)
 	msg.post("#", "fire_init")
 end

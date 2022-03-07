@@ -8,6 +8,9 @@ M.active_flammables = {}
 -- defgraph node positions
 M.node_positions = {}
 
+-- all active fire scripts
+M.fires = {}
+
 -- convenient place to access this worker node so you don't need to loop a table
 M.extinguishers_worker_node = -1
 

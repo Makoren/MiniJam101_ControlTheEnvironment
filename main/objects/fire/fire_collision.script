@@ -1,3 +1,9 @@
+go.property("fire_id", msg.url())
+
+function init(self)
+	self.fire_id = go.get_id("flame")
+end
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
 		if message.group == hash("object") or message.group == hash("object_drag") then
