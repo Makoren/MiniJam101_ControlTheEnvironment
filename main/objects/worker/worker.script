@@ -4,7 +4,8 @@ local gamestate = require("data.gamestate")
 local get_nearest_fire_node_and_id
 local find_next_fire
 
-function find_next_fire(self)
+function find_next_fire(self, handle, elapsed)
+	print("finding")
 	if next(self.touching_fire_cols) ~= nil then
 		-- extinguish the other fires first and remove them from touching_fire_cols
 		for k, v in pairs(self.touching_fire_cols) do
@@ -13,7 +14,11 @@ function find_next_fire(self)
 		end
 	end
 
-	msg.post("#", "find_next_fire")
+	local new_node, new_id = get_nearest_fire_node_and_id(self)
+	self.next_fire_id = new_id
+	self.movement_data = defgraph.move_initialize(go.get_position(), { new_node })
+
+	timer.delay(0.5, false, find_next_fire)
 end
 
 function get_nearest_fire_node_and_id(self)
@@ -37,7 +42,16 @@ function get_nearest_fire_node_and_id(self)
 	end
 
 	local new_url = msg.url(nil, fires_copy[first_key], "fire")
-	return go.get(new_url, "worker_node"), first_key
+	-- pcall checks if the function will throw an error or not, try not to rely on this in real projects (unless it doesn't matter)
+	local result = pcall(go.get, new_url, "worker_node")
+	local value = nil
+	if result then
+		value = go.get(new_url, "worker_node")
+	end
+
+	print(result)
+	
+	return value, first_key
 end
 
 local function alert_state(self, handle, elapsed)
@@ -100,10 +114,6 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("worker_node_response") then
 		self.next_fire_node = message.worker_node
-	elseif message_id == hash("find_next_fire") then
-		local new_node, new_id = get_nearest_fire_node_and_id(self)
-		self.next_fire_id = new_id
-		self.movement_data = defgraph.move_initialize(go.get_position(), { new_node })
 	end
 end
 
